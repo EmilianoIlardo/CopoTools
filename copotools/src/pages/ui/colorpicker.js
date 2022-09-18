@@ -84,12 +84,30 @@ const ColorPicker = () => {
   }
   
   return (
+    <React.Fragment>
+
     <div className="row">
-      <div className="col-sm-6">
-        <h1 className="display-6">Mix<i class="bi bi-droplet-fill"></i></h1>
+      <h1>
+        Color picker and converter
+      </h1>
+      <h6>
+      Pick a color you like from the color picker 
+        and get its correspondent RGB and Hex
+          values, or fill either the RGB or Hex 
+          fields in order to get its conversion
+      </h6>
+    </div>
+    <div className="row">
+      <div className="col-lg-5">
+        <h1 className="display-6">Mix</h1>
         <HexColorPicker color={color} onChange={onPickerChange} />
       </div>
-      <div className="col-sm-3">
+      <div className="col-lg-1">
+        <h1 className="display-6">
+          <i class="bi bi-droplet-fill" style={{ color: color }}></i>
+        </h1>        
+      </div>
+      <div className="col-lg-3">
           <h1 className="display-6">Hex</h1>
           <div className="input-group">
             <span class="input-group-text">#</span>
@@ -101,7 +119,7 @@ const ColorPicker = () => {
             />
          </div>
       </div>
-      <div className="col-sm-3">
+      <div className="col-lg-3">
           <h1 className="display-6">Rgb</h1>
           <div>
           <div class="input-group">
@@ -139,6 +157,7 @@ const ColorPicker = () => {
 
     </div>
 
+    </React.Fragment>
   );
 };
 

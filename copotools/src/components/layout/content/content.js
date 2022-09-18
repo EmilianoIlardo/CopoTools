@@ -1,4 +1,6 @@
 import  {Route, Routes} from "react-router-dom";
+import JsonPrettyPrinter from "../../../pages/formatting/prettyprint-json";
+import XmlPrettyPrinter from "../../../pages/formatting/prettyprint-xml";
 import ColorPicker from "../../../pages/ui/colorpicker";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 
@@ -12,6 +14,8 @@ const Content = () => {
       <div className="editor">
         <Routes>
           <Route path="tools/ui/colorpicker" element={<ColorPicker />} />
+          <Route path="tools/formatting/jsonprettyprinter" element={<JsonPrettyPrinter />} />
+          <Route path="tools/formatting/xmlprettyprinter" element={<XmlPrettyPrinter />} />
         </Routes>
       </div>
       <div className="window-main-body-right">

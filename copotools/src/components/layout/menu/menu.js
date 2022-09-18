@@ -10,22 +10,23 @@ const unfilteredMenuItems = [
     children: [
         {   name: "JSON", 
             children: [
-                { name: "Pretty Print JSON", url: "asdasd2"}
+                { name: "Pretty Print JSON", url: "tools/formatting/jsonprettyprinter"}
             ]},
         { name: "XML", 
             children: [
-                { name: "Pretty Print XML", url: "asdasd2"}
+                { name: "Pretty Print XML", url: "tools/formatting/xmlprettyprinter"}
         ],} 
     ]},
-    { name: 'Encryption', url: 'asdasd' },
-    { name: 'UI', url: 'asdasd' },
-    { name: 'UI'
-     ,children: [
-         { name: "children1", url: "asdasd2"},
-         { name: "children2", url: "asdasd4"}
-     ]
- },
-
+    { name: 'Encryption / Decryption', 
+        children: [
+        { name: "Base64", url: "tools/formatting/jsonprettyprinter"}
+        , { name: "URL", url: "tools/formatting/jsonprettyprinter"}
+    ]},
+    { name: 'API', url: 'asdasd' },
+    { name: 'MISC', 
+        children: [
+            {name: 'Cron Parser', url: 'asdasd'}
+        ] },
 ]
 
 const renderMenu = (items, isRecursing = false) =>
