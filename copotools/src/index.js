@@ -12,7 +12,7 @@ const App = () => {
   return (
     <html lang="en" >
     <head>
-      <title>Free online dev toolbox</title>
+      <title>Coder Toolbox</title>
     </head>
     <body>
       <BrowserRouter>

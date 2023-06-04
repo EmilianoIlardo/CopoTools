@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
+import ReactPrismEditor from "react-prism-editor";
 import  'react-toastify/dist/ReactToastify.css'
 
 function XmlPrettyPrinter() 
@@ -30,6 +31,7 @@ function XmlPrettyPrinter()
                 throw new Error();
 
             var resultXml = new XMLSerializer().serializeToString(resultDoc);
+            setTextToFormat(resultXml);
         }
         catch {
             toast.error('Invalid XML!', {
@@ -42,8 +44,6 @@ function XmlPrettyPrinter()
                 progress: undefined,
                 });
         }
-
-        setTextToFormat(resultXml);
     }
 
     function isParseError(parsedDocument) {
@@ -62,6 +62,15 @@ function XmlPrettyPrinter()
 
     const copyXml = () => {
         navigator.clipboard.writeText(textToFormat);
+        toast.info('Copied to clipboard succesfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
     }
     return (
         <div className='container'>
@@ -88,18 +97,24 @@ function XmlPrettyPrinter()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                    <textarea 
-                        type="textarea" 
-                        className="form-control"
-                        rows="5"
-                        onChange={(e) => setTextToFormat(e.target.value)}
-                        value={textToFormat}/>
+                    <ReactPrismEditor
+                        language={"xml"}
+                        theme='okaidia'
+                        code={textToFormat}
+                        lineNumber={true}
+                        readOnly={false}
+                        clipboard={true}
+                        showLanguage={false}
+                        changeCode={code => {
+                            setTextToFormat(code);
+                        }}
+                    /> 
                 </div>
             </div>
             <div className="row mt-3">
                 <div className="col-md-12">
                     <button className="button button--publish" onClick={formatXml}>
-                        <i class="bi bi-filetype-json"></i>
+                        <i class="bi bi-filetype-xml"></i>
                             Pretty print
                     </button>
                     <button className="button button--save" onClick={copyXml}>

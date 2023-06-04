@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
 import ReactPrismEditor from "react-prism-editor";
 import  'react-toastify/dist/ReactToastify.css';
-import CodeEditor from "../../components/devtools/code-editor";
+import { format } from 'sql-formatter';
 
-function JsonPrettyPrinter() 
+function SqlPrettyPrinter() 
 {
-    const [textToFormat, setTextToFormat] = useState('{"help": "format your ugly json"}')
-
-    const formatJson = () => {
+    const [textToFormat, setTextToFormat] = useState('SELECT * FROM Table1 t JOIN Table2 t2 on t.Id = t2.Table1Id WHERE T.Id > 512 ORDER BY t.CreatedTimestamp DESC');
+    
+    const formatCss = () => {
         try {
-            var objResult = JSON.parse(textToFormat);
-            setTextToFormat(JSON.stringify(objResult, null, '\t'));
+
+            setTextToFormat(format(textToFormat, { language: 'mysql' }));
         }
-        catch {
-            toast.error('Invalid JSON!', {
+        catch (error) {
+            console.log(error);
+            toast.error('Invalid SQL!', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -26,7 +27,7 @@ function JsonPrettyPrinter()
         }
     }
 
-    const copyJson = () => {
+    const copyCss = () => {
         navigator.clipboard.writeText(textToFormat);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
@@ -53,19 +54,19 @@ function JsonPrettyPrinter()
                 />
             <div className="row">
                 <h1>
-                    Pretty print JSON
+                    Pretty print SQL
                 </h1>
                 <h6>
-                    Enter the JSON text to pretty print and then click the green button
+                    Enter the SQL text to pretty print and then click the green button
                     in order to pretty print. Also, you can copy the result to your clipboard.
-                    Note that the JSON must be VALID in order to be able to pretty print it.
+                    Note that the SQL must be VALID in order to be able to pretty print it.
                 </h6>
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor             
-                    editorId={"jsonprettyprinter"}     
-                    language={"json"}
+                <ReactPrismEditor
+                    language={"sql"}
+                    theme='okaidia'
                     code={textToFormat}
                     lineNumber={true}
                     readOnly={false}
@@ -73,16 +74,17 @@ function JsonPrettyPrinter()
                     showLanguage={false}
                     changeCode={code => {
                         setTextToFormat(code);
-                    }}></CodeEditor>
+                    }}
+                /> 
                 </div>
             </div>
             <div className="row mt-3">
                 <div className="col-md-12">
-                    <button className="button button--publish" onClick={formatJson}>
+                    <button className="button button--publish" onClick={formatCss}>
                         <i class="bi bi-filetype-json"></i>
                             Pretty print
                     </button>
-                    <button className="button button--save" onClick={copyJson}>
+                    <button className="button button--save" onClick={copyCss}>
                         <i class="bi bi-clipboard"></i>
                             Copy to clipboard
                     </button>
@@ -92,4 +94,4 @@ function JsonPrettyPrinter()
         )
 }
 
-export default JsonPrettyPrinter;
+export default SqlPrettyPrinter;

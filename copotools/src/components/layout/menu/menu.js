@@ -15,17 +15,21 @@ const unfilteredMenuItems = [
         { name: "XML", 
             children: [
                 { name: "Pretty Print XML", url: "tools/formatting/xmlprettyprinter"}
+        ],},
+        { name: "SQL", 
+            children: [
+                { name: "Pretty Print SQL", url: "tools/formatting/sqlprettyprinter"}
         ],} 
     ]},
     { name: 'Encryption / Decryption', 
         children: [
-        { name: "Base64", url: "tools/formatting/jsonprettyprinter"}
-        , { name: "URL", url: "tools/formatting/jsonprettyprinter"}
+        { name: "Base64", url: "tools/encryption/base64"}
+        , { name: "URL", url: "tools/encryption/url"}
+        , { name: "JWT Decoder", url: "tools/encryption/jwt"}
     ]},
-    { name: 'API', url: 'asdasd' },
     { name: 'MISC', 
         children: [
-            {name: 'Cron Parser', url: 'asdasd'}
+            {name: 'Cron Parser', url: 'tools/misc/cron'}
         ] },
 ]
 
@@ -38,12 +42,7 @@ const renderMenu = (items, isRecursing = false) =>
             (
                 <li key={i + items[i].name} className="tree-branch">
                     <div className="tree-branch-action">
-                    <Link 
-                        to={items[i].hasOwnProperty("url") ? items[i].url : "#"}
-                        className="tree-branch-link">
-                            {items[i].name}
-                        <button className="tree-branch-button">+</button>
-                    </Link>
+                        {renderMenuItem(items[i])}
                     </div>
                     {
                         items[i].hasOwnProperty("children") && renderMenu(items[i].children, true)
@@ -57,6 +56,22 @@ const renderMenu = (items, isRecursing = false) =>
         {itemsJsx}
     </ul>)
 }
+
+const renderMenuItem = (item) => 
+{
+    if (item.hasOwnProperty("url"))
+        return <Link 
+                to={item.hasOwnProperty("url") ? item.url : "#"}
+                className="tree-branch-link">
+                    {item.name}
+                <button className="tree-branch-button">+</button>
+            </Link>
+
+    return <a className="tree-branch-nolink">{item.name}</a>
+
+}
+
+
 
 function Menu() {
     const [filteredMenuItems, setFilteredMenuItems] = useState(unfilteredMenuItems);

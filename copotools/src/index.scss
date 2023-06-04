@@ -152,6 +152,7 @@ img {
 .breadcrumbs {
    display: flex;
    flex-wrap: wrap;
+   margin-bottom:0px;
 }
 
 .breadcrumbs-item {
@@ -356,10 +357,13 @@ img {
       width: 15px;
       background-color: #19194a;
    }
+   
+   &::-webkit-scrollbar-corner {
+      background-color: #19194a;
+   }
 
    &::-webkit-scrollbar-thumb {
       width: 5px;
-      border-radius: 99em;
       background-color: mix(#FFF,#19194a, 25%);
       border: 5px solid #19194a;
    }
@@ -531,6 +535,46 @@ img {
       transition: 0.15s ease;
       transform-origin: 50% 50%;
    }
+
+   
+   &.active,
+   &:hover {
+	   color: #fff;
+	   &:before {
+		   border-color: #fff;
+		   transform: scale(1.25);
+		}
+	}
+	&--404 {
+	   &:before {
+		  border-radius: 0;
+		  transform: rotate(45deg);
+	   }
+ 
+	   &:hover:before {
+		 transform: scale(1.25) rotate(45deg);
+	   }
+	}
+	
+   &.active {
+      font-weight: 500;
+      &:before {
+         background-color: #fff;
+      }
+   }
+}
+
+.tree-branch-nolink {
+   color: inherit;
+   // font-size: 0.875rem;
+   color: mix(#FFF,#19194a, 75%);
+   text-decoration: none;
+   font-weight: bold;
+   position: relative;
+   display: block;
+   padding-top: 0.5em;
+   padding-bottom: 0.5em;
+   transition: 0.15s ease;
 
    
    &.active,
