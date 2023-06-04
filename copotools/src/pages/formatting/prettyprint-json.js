@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import ReactPrismEditor from "react-prism-editor";
 import  'react-toastify/dist/ReactToastify.css';
 import CodeEditor from "../../components/devtools/code-editor";
 

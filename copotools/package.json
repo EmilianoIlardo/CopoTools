@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.1.3",
     "bootstrap-icons": "^1.8.3",
+    "dpm-base": "^0.3.4",
     "lodash": "^4.17.21",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
@@ -48,6 +49,7 @@
   "devDependencies": {
     "cronstrue": "^2.27.0",
     "jwt-decode": "^3.1.2",
+    "lorem-ipsum": "^2.0.8",
     "sql-formatter": "^12.2.1",
     "sql-lint": "^1.0.0"
   }

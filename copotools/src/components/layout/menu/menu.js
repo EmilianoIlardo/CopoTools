@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 const unfilteredMenuItems = [
     { name: 'UI', 
     children: [
-        { name: "Color picker and converter", url: "tools/ui/colorpicker"}
+        { name: "Color picker and converter", url: "tools/ui/colorpicker"},
+        { name: "Lorem ipsum generator", url: "tools/ui/loremipsumgenerator"}
     ]},
     { name: 'Formatting', 
     children: [
@@ -26,6 +27,10 @@ const unfilteredMenuItems = [
         { name: "Base64", url: "tools/encryption/base64"}
         , { name: "URL", url: "tools/encryption/url"}
         , { name: "JWT Decoder", url: "tools/encryption/jwt"}
+    ]},
+    { name: 'Conversion', 
+        children: [
+        { name: "Dec to Bin to Hex to Oct", url: "tools/conversion/num"}
     ]},
     { name: 'MISC', 
         children: [

@@ -11,6 +11,8 @@ import CronParser from "../../../pages/misc/cron";
 import ColorPicker from "../../../pages/ui/colorpicker";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import AboutComponent from "../../../pages/about/about";
+import LoremIpsumGenerator from "../../../pages/ui/loremipsumgenerator";
+import NumberConverterComponent from "../../../pages/conversion/number-converter";
 
 const Content = () => {
     return (        
@@ -25,6 +27,7 @@ const Content = () => {
           <Route path="settings" element={<Settings />} />
           <Route path="about" element={<AboutComponent />} />
           <Route path="tools/ui/colorpicker" element={<ColorPicker />} />
+          <Route path="tools/ui/loremipsumgenerator" element={<LoremIpsumGenerator />} />
           <Route path="tools/formatting/jsonprettyprinter" element={<JsonPrettyPrinter />} />
           <Route path="tools/formatting/xmlprettyprinter" element={<XmlPrettyPrinter />} />
           <Route path="tools/encryption/base64" element={<Base64EncoderDecoder />} />
@@ -32,6 +35,7 @@ const Content = () => {
           <Route path="tools/misc/cron" element={<CronParser />} />
           <Route path="tools/encryption/jwt" element={<JwtDecoder />} />
           <Route path="tools/formatting/sqlprettyprinter" element={<SqlPrettyPrinter />} />
+          <Route path="tools/conversion/num" element={<NumberConverterComponent />} />
         </Routes>
       </div>
       <div className="window-main-body-right">
