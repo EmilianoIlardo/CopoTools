@@ -5,7 +5,8 @@ const unfilteredMenuItems = [
     { name: 'UI', 
     children: [
         { name: "Color picker and converter", url: "tools/ui/colorpicker"},
-        { name: "Lorem ipsum generator", url: "tools/ui/loremipsumgenerator"}
+        { name: "Lorem ipsum generator", url: "tools/ui/loremipsumgenerator"},
+        { name: "Image to Base64", url: "tools/ui/imagetobase64"}
     ]},
     { name: 'Formatting', 
     children: [

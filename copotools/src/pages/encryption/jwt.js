@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import ReactPrismEditor from "react-prism-editor";
+import CodeEditor from "../../components/devtools/code-editor";
 import jwt_decode from "jwt-decode";
 import  'react-toastify/dist/ReactToastify.css'
 
@@ -42,17 +42,6 @@ function JwtDecoder()
 
     return (
         <div className='container'>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                />
             <div className="row">
                 <h1>
                     JWT decoder
@@ -63,17 +52,17 @@ function JwtDecoder()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                    <ReactPrismEditor
-                            theme='okaidia'
-                            code={jwtToParse}
-                            lineNumber={true}
-                            readOnly={false}
-                            clipboard={true}
-                            showLanguage={false}
-                            changeCode={code => {
-                                setJwtToParse(code);
-                            }}
-                    /> 
+                <CodeEditor
+                    editorId={'jwtdecoder'}          
+                    code={jwtToParse}
+                    lineNumber={true}
+                    readOnly={false}
+                    clipboard={true}
+                    showLanguage={false}
+                    changeCode={code => {
+                        setJwtToParse(code);
+                    }}></CodeEditor>
+
                 </div>
             </div>
             <div className="row mt-3">
@@ -96,32 +85,33 @@ function JwtDecoder()
                     </button>
                 </div>
             </div>
+            <hr></hr>
             <div className="row mt-3">
                 <div className="col-md-12">
                     <h2>Header</h2>
-                    <ReactPrismEditor
-                            language={"json"}
-                            theme='okaidia'
-                            code={decodedHeader}
-                            lineNumber={true}
-                            readOnly={true}
-                            clipboard={true}
-                            showLanguage={false}
-                    /> 
+                    <CodeEditor
+                        editorId={'jwtdecoderheader'}          
+                        language={"json"}
+                        theme='okaidia'
+                        code={decodedHeader}
+                        lineNumber={true}
+                        readOnly={true}
+                        clipboard={true}
+                        showLanguage={false}></CodeEditor>                 
                 </div>
             </div>
             <div className="row mt-3">
                 <div className="col-md-12">
                     <h2>Payload</h2>
-                    <ReactPrismEditor
-                            language={"json"}
-                            theme='okaidia'
-                            code={decodedJwt}
-                            lineNumber={true}
-                            readOnly={true}
-                            clipboard={true}
-                            showLanguage={false}
-                    /> 
+                    <CodeEditor
+                        editorId={'jwtdecoderpayload'}          
+                        language={"json"}
+                        theme='okaidia'
+                        code={decodedJwt}
+                        lineNumber={true}
+                        readOnly={true}
+                        clipboard={true}
+                        showLanguage={false}></CodeEditor>
                 </div>
             </div>
         </div>

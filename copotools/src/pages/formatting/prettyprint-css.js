@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import ReactPrismEditor from "react-prism-editor";
+import CodeEditor from "../../components/devtools/code-editor";
 import  'react-toastify/dist/ReactToastify.css';
 import { format } from 'sql-formatter';
 
@@ -41,17 +41,6 @@ function SqlPrettyPrinter()
     }
     return (
         <div className='container'>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                />
             <div className="row">
                 <h1>
                     Pretty print SQL
@@ -64,9 +53,9 @@ function SqlPrettyPrinter()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                <ReactPrismEditor
+                <CodeEditor
+                    editorId={'sqlprettyprinter'}          
                     language={"sql"}
-                    theme='okaidia'
                     code={textToFormat}
                     lineNumber={true}
                     readOnly={false}
@@ -74,8 +63,7 @@ function SqlPrettyPrinter()
                     showLanguage={false}
                     changeCode={code => {
                         setTextToFormat(code);
-                    }}
-                /> 
+                    }}></CodeEditor>
                 </div>
             </div>
             <div className="row mt-3">

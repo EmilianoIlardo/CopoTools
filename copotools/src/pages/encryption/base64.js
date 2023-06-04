@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import ReactPrismEditor from "react-prism-editor";
+import CodeEditor from "../../components/devtools/code-editor";
 import  'react-toastify/dist/ReactToastify.css'
 
 function Base64EncoderDecoder() 
@@ -56,17 +56,6 @@ function Base64EncoderDecoder()
 
     return (
         <div className='container'>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                />
             <div className="row">
                 <h1>
                     Base64 Encode/Decode
@@ -77,17 +66,16 @@ function Base64EncoderDecoder()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                    <ReactPrismEditor
-                        theme='okaidia'
-                        code={textToTransform}
-                        lineNumber={true}
-                        readOnly={false}
-                        clipboard={true}
-                        showLanguage={false}
-                        changeCode={code => {
-                            setTextToTransform(code);
-                        }}
-                    /> 
+                <CodeEditor
+                    editorId={'base64decoder'}          
+                    code={textToTransform}
+                    lineNumber={true}
+                    readOnly={false}
+                    clipboard={true}
+                    showLanguage={false}
+                    changeCode={code => {
+                        setTextToTransform(code);
+                    }}></CodeEditor>
                 </div>
             </div>
             <div className="row mt-3">

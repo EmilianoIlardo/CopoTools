@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import ReactPrismEditor from "react-prism-editor";
+import CodeEditor from "../../components/devtools/code-editor";
 import  'react-toastify/dist/ReactToastify.css'
 
 function XmlPrettyPrinter() 
@@ -74,17 +74,6 @@ function XmlPrettyPrinter()
     }
     return (
         <div className='container'>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                />
             <div className="row">
                 <h1>
                     Pretty print XML
@@ -97,18 +86,17 @@ function XmlPrettyPrinter()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                    <ReactPrismEditor
-                        language={"xml"}
-                        theme='okaidia'
-                        code={textToFormat}
-                        lineNumber={true}
-                        readOnly={false}
-                        clipboard={true}
-                        showLanguage={false}
-                        changeCode={code => {
-                            setTextToFormat(code);
-                        }}
-                    /> 
+                <CodeEditor
+                    editorId={'xmlprettyprinter'}          
+                    language={"xml"}
+                    code={textToFormat}
+                    lineNumber={true}
+                    readOnly={false}
+                    clipboard={true}
+                    showLanguage={false}
+                    changeCode={code => {
+                        setTextToFormat(code);
+                    }}></CodeEditor>
                 </div>
             </div>
             <div className="row mt-3">

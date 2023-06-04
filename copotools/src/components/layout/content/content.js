@@ -13,10 +13,23 @@ import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import AboutComponent from "../../../pages/about/about";
 import LoremIpsumGenerator from "../../../pages/ui/loremipsumgenerator";
 import NumberConverterComponent from "../../../pages/conversion/number-converter";
+import ImageToBase64Component from "../../../pages/ui/imagetobase64";
+import  { ToastContainer, toast } from "react-toastify";
 
 const Content = () => {
     return (        
 <main className="window-main">
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                />
   <div className="window-main-header">
       <Breadcrumbs></Breadcrumbs>
   </div>
@@ -28,6 +41,7 @@ const Content = () => {
           <Route path="about" element={<AboutComponent />} />
           <Route path="tools/ui/colorpicker" element={<ColorPicker />} />
           <Route path="tools/ui/loremipsumgenerator" element={<LoremIpsumGenerator />} />
+          <Route path="tools/ui/imagetobase64" element={<ImageToBase64Component />} />
           <Route path="tools/formatting/jsonprettyprinter" element={<JsonPrettyPrinter />} />
           <Route path="tools/formatting/xmlprettyprinter" element={<XmlPrettyPrinter />} />
           <Route path="tools/encryption/base64" element={<Base64EncoderDecoder />} />
@@ -53,7 +67,8 @@ const Content = () => {
       </section>
       </div>
     </div>
-  </main>);
+  </main>
+  );
 }
 
 export default Content;

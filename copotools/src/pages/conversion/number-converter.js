@@ -1,16 +1,14 @@
-import base, { hex } from 'dpm-base';
-import { useState } from 'react';
+import base from 'dpm-base';
+import { useEffect, useState } from 'react';
 import  { ToastContainer, toast } from "react-toastify";
 
 
 function NumberConverterComponent()
 {
-    let startingNumberDec = 10;
-
-    const [decNumber, setDecNumber] = useState(startingNumberDec);
-    const [binNumber, setBinNumber] = useState(startingNumberDec);
-    const [hexNumber, setHexNumber] = useState(startingNumberDec);
-    const [octNumber, setOctNumber] = useState(startingNumberDec);
+    const [decNumber, setDecNumber] = useState(255);
+    const [binNumber, setBinNumber] = useState(11111111);
+    const [hexNumber, setHexNumber] = useState("FF");
+    const [octNumber, setOctNumber] = useState(377);
 
     const changeDec = (decNumber) => {
         if (!base.decimal.isValid(decNumber)) {
@@ -75,17 +73,6 @@ function NumberConverterComponent()
 
     return (
         <div className='container'>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                />
             <div className="row">
                 <h1>
                     Number converters

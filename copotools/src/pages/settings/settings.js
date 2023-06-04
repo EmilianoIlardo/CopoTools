@@ -54,6 +54,7 @@ function Settings()
                 Configuration related to the ui/ux. This configuration is persisted in your browser so that
                 next time you visit us you don't need to set-up everything from scratch.
             </p>
+            <hr></hr>
             <div class="form-group mt-3">
                 <h6>Local storage settings</h6>
                 <div class="form-check form-switch">
@@ -61,6 +62,7 @@ function Settings()
                     <label class="form-check-label" for="flexSwitchCheckDefault">Enable storage of editors' text</label>
                 </div>
             </div>
+            <hr></hr>
             <div class="row mt-3">
                 <h6>Editor theme</h6>
                 <div class="col-md-6">
