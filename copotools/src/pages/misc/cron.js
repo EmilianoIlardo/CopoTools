@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import ReactPrismEditor from "react-prism-editor";
+import CodeEditor from "../../components/devtools/code-editor";
 import  'react-toastify/dist/ReactToastify.css';
 import cronstrue from 'cronstrue';
 
@@ -64,17 +64,16 @@ function CronParser()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                    <ReactPrismEditor
-                        theme='okaidia'
-                        code={textToParse}
-                        lineNumber={true}
-                        readOnly={false}
-                        clipboard={true}
-                        showLanguage={false}
-                        changeCode={code => {
-                            setTextToParse(code);
-                        }}
-                    /> 
+                <CodeEditor             
+                    editorId={"cronparser"}     
+                    code={textToParse}
+                    lineNumber={true}
+                    readOnly={false}
+                    clipboard={true}
+                    showLanguage={false}
+                    changeCode={code => {
+                        setTextToParse(code);
+                    }}></CodeEditor>
                 </div>
             </div>
             <div className="row mt-3">
