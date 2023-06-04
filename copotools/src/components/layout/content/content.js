@@ -17,6 +17,19 @@ import ImageToBase64Component from "../../../pages/ui/imagetobase64";
 import  { ToastContainer, toast } from "react-toastify";
 
 const Content = () => {
+
+    // TODO extract this to service
+    const settingsStr = localStorage.getItem("settings");
+    let settings;
+    if (!settingsStr || settingsStr.length < 1 )
+    {
+        settings = { // set defaults
+            textStorageEnabled: true,
+            editorTheme: 'okaidia'
+        };
+        localStorage.setItem("settings", JSON.stringify(settings));
+    }
+
     return (        
 <main className="window-main">
               <ToastContainer
