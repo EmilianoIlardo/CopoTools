@@ -9,29 +9,25 @@ const unfilteredMenuItems = [
         { name: "Image to Base64", url: "tools/ui/imagetobase64"}
     ]},
     { name: 'Formatting', 
-    children: [
-        {   name: "JSON", 
-            children: [
-                { name: "Pretty Print JSON", url: "tools/formatting/jsonprettyprinter"}
-            ]},
-        { name: "XML", 
-            children: [
-                { name: "Pretty Print XML", url: "tools/formatting/xmlprettyprinter"}
-        ],},
-        { name: "SQL", 
-            children: [
+    children: [{ name: "Pretty Print JSON", url: "tools/formatting/jsonprettyprinter"},
+                { name: "Pretty Print XML", url: "tools/formatting/xmlprettyprinter"},
                 { name: "Pretty Print SQL", url: "tools/formatting/sqlprettyprinter"}
-        ],} 
+
     ]},
     { name: 'Encryption / Decryption', 
         children: [
         { name: "Base64", url: "tools/encryption/base64"}
         , { name: "URL", url: "tools/encryption/url"}
         , { name: "JWT Decoder", url: "tools/encryption/jwt"}
+        , { name: "Cryptography", children: [
+            { name: "MD5 Encoder", url: "tools/encryption/crypto/md5"},
+            { name: "SHA-256 Encoder", url: "tools/encryption/crypto/sha256"},
+            { name: "SHA-512 Encoder", url: "tools/encryption/crypto/sha512"}
+        ]}
     ]},
     { name: 'Conversion', 
         children: [
-        { name: "Dec to Bin to Hex to Oct", url: "tools/conversion/num"}
+        { name: "Dec/Bin/Hex/Oct converter", url: "tools/conversion/num"}
     ]},
     { name: 'MISC', 
         children: [

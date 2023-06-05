@@ -15,6 +15,9 @@ import LoremIpsumGenerator from "../../../pages/ui/loremipsumgenerator";
 import NumberConverterComponent from "../../../pages/conversion/number-converter";
 import ImageToBase64Component from "../../../pages/ui/imagetobase64";
 import  { ToastContainer, toast } from "react-toastify";
+import Md5EncoderComponent from "../../../pages/encryption/md5";
+import Sha256EncoderComponent from "../../../pages/encryption/sha256";
+import Sha512EncoderComponent from "../../../pages/encryption/sha512";
 
 const Content = () => {
 
@@ -59,6 +62,9 @@ const Content = () => {
           <Route path="tools/formatting/xmlprettyprinter" element={<XmlPrettyPrinter />} />
           <Route path="tools/encryption/base64" element={<Base64EncoderDecoder />} />
           <Route path="tools/encryption/url" element={<UrlEncoderDecoder />} />
+          <Route path="tools/encryption/crypto/md5" element={<Md5EncoderComponent />} />
+          <Route path="tools/encryption/crypto/sha256" element={<Sha256EncoderComponent />} />
+          <Route path="tools/encryption/crypto/sha512" element={<Sha512EncoderComponent />} />
           <Route path="tools/misc/cron" element={<CronParser />} />
           <Route path="tools/encryption/jwt" element={<JwtDecoder />} />
           <Route path="tools/formatting/sqlprettyprinter" element={<SqlPrettyPrinter />} />
