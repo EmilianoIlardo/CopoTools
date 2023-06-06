@@ -12,7 +12,7 @@ const App = () => {
   return (
     <html lang="en" >
     <head>
-      <title>Coder Toolkit</title>
+      <title>Coder's Toolkit</title>
     </head>
     <body>
       <HashRouter>

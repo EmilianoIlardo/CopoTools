@@ -48,7 +48,7 @@ function ImageToBase64Component() {
       }
 
     return (
-            <div class="container">
+            <div class="row">
                 <h1>
                     Image to Base64 converter
                 </h1>

@@ -7,8 +7,8 @@ import  'react-toastify/dist/ReactToastify.css'
 function JwtDecoder() 
 {
     const [jwtToParse, setJwtToParse] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUaGVzZSB0b29scyBhcmUgdGhlIGJlc3QiLCJuYW1lIjoiRW1pbGlhbm8gSWxhcmRvIiwiaWF0IjoxNTE2MjM5MDIyfQ.RCCgR-H7GNWM0sLGNjobv8wIriITSabedPJSiI46PM0');
-    const [decodedJwt, setDecodedJwt] = useState("");
-    const [decodedHeader, setDecodedHeader] = useState("");
+    const [decodedJwt, setDecodedJwt] = useState(" ");
+    const [decodedHeader, setDecodedHeader] = useState(" ");
 
     const decode = () => {
         try {

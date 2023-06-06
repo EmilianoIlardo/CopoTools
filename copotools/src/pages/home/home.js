@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import logo from '../../assets/logo.png';
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Coder Toolkit</h1>
+        <img src={logo}></img>
         <h6>
           Coder Toolkit offers free online tools for developers.
         </h6>

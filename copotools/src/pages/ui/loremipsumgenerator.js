@@ -43,23 +43,12 @@ function LoremIpsumGenerator() {
     };
 
     return (
-        <div className='container'>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                />
+        <div class="row">
             <div className="row">
                 <h1>
                     Lorem Ipsum generator
                 </h1>
-                </div>
+            </div>
             <div className="row">
                 <div className="col-md-12">
                 <CodeEditor             
@@ -89,6 +78,7 @@ function LoremIpsumGenerator() {
                 </div>
             </div>
         </div>
+            
         )
 }
 
