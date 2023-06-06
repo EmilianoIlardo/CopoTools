@@ -3,7 +3,7 @@ import {createRoot} from 'react-dom/client';
 import Nav from "./components/layout/nav/nav";
 import Menu from "./components/layout/menu/menu";
 import Content from "./components/layout/content/content";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter} from "react-router-dom";
 import "./index.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -15,7 +15,7 @@ const App = () => {
       <title>Coder Toolkit</title>
     </head>
     <body>
-      <BrowserRouter>
+      <HashRouter>
         <div className="window">
           <Nav>
           </Nav>
@@ -25,7 +25,7 @@ const App = () => {
           </Content>
           
         </div>
-      </BrowserRouter>
+      </HashRouter>
 
     </body>
     </html>
