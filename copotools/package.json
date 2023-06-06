@@ -1,6 +1,7 @@
 {
   "name": "copotools",
   "version": "0.1.0",
+  "homepage": "https://emilianoilardo.github.io/CopoTools",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -26,9 +27,13 @@
     "jwt-decode": "^3.1.2",
     "lorem-ipsum": "^2.0.8",
     "sql-formatter": "^12.2.1",
-    "sql-lint": "^1.0.0"
+    "sql-lint": "^1.0.0",
+    "crypto-js": "^4.1.1",
+    "gh-pages": "^5.0.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
