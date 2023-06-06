@@ -14,7 +14,6 @@ function SqlPrettyPrinter()
             setTextToFormat(format(textToFormat, { language: 'mysql' }));
         }
         catch (error) {
-            console.log(error);
             toast.error('Invalid SQL!', {
                 position: "top-right",
                 autoClose: 5000,

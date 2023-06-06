@@ -2,8 +2,7 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 
 const Nav = () => {
-    const location = useLocation()
-    console.log(location);
+    const location = useLocation();
     return (
     <header className="window-header">
     <nav className="navigation">

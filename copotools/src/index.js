@@ -12,7 +12,7 @@ const App = () => {
   return (
     <html lang="en" >
     <head>
-      <title>Coder Toolbox</title>
+      <title>Coder Toolkit</title>
     </head>
     <body>
       <BrowserRouter>

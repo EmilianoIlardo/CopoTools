@@ -73,16 +73,8 @@ const Content = () => {
       </div>
       <div className="window-main-body-right">
         <section className="settings-section">
-        <h2 className="section-title">Settings</h2>
+        <h2 className="section-title">Sponsors</h2>
 
-        <div className="input-group">
-          <label className="input-label">Slug</label>
-          <input type="text" className="input-field" value="what-web-designers-can-learn-from-artists-from-van-gogh-to-lloyd-wright" />
-        </div>
-        <div className="input-group">
-          <label className="input-label">Full URL</label>
-          <a href="#" className="input-url">https://bold.io/blog/what-web-designers-can-learn-from-artists-from-van-gogh-to-lloyd-wright</a>
-        </div>
       </section>
       </div>
     </div>

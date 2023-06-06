@@ -10,7 +10,6 @@ function CronParser()
         try {
             setResult(cronstrue.toString(textToParse));
         } catch (error){
-            console.log(error);
             toast.error('Can\'t parse cron expression.', {
                 position: "top-right",
                 autoClose: 5000,

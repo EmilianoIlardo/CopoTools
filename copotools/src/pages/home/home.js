@@ -4,9 +4,9 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Coder Toolbox</h1>
+        <h1>Coder Toolkit</h1>
         <h6>
-          Coder toolbox offers free online tools for developers.
+          Coder Toolkit offers free online tools for developers.
         </h6>
         <p>
           Use any tool you like from the menu on the left. If you have a hard time trying to find whatever tool
