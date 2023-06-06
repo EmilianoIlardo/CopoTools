@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/EmilianoIlardo/CopoTools/static/css/main.8251fbd7.css",
-    "main.js": "/EmilianoIlardo/CopoTools/static/js/main.dbbd3a9b.js",
-    "static/media/bootstrap-icons.woff?": "/EmilianoIlardo/CopoTools/static/media/bootstrap-icons.7ff3ca6fa798de3f8ac2.woff",
-    "static/media/bootstrap-icons.woff2?": "/EmilianoIlardo/CopoTools/static/media/bootstrap-icons.f2539a501be3a673de05.woff2",
-    "index.html": "/EmilianoIlardo/CopoTools/index.html",
-    "main.8251fbd7.css.map": "/EmilianoIlardo/CopoTools/static/css/main.8251fbd7.css.map",
-    "main.dbbd3a9b.js.map": "/EmilianoIlardo/CopoTools/static/js/main.dbbd3a9b.js.map"
+    "main.css": "/CopoTools/static/css/main.d594d5d0.css",
+    "main.js": "/CopoTools/static/js/main.243d6f2a.js",
+    "static/media/bootstrap-icons.woff?": "/CopoTools/static/media/bootstrap-icons.7ff3ca6fa798de3f8ac2.woff",
+    "static/media/bootstrap-icons.woff2?": "/CopoTools/static/media/bootstrap-icons.f2539a501be3a673de05.woff2",
+    "index.html": "/CopoTools/index.html",
+    "main.d594d5d0.css.map": "/CopoTools/static/css/main.d594d5d0.css.map",
+    "main.243d6f2a.js.map": "/CopoTools/static/js/main.243d6f2a.js.map"
   },
   "entrypoints": [
-    "static/css/main.8251fbd7.css",
-    "static/js/main.dbbd3a9b.js"
+    "static/css/main.d594d5d0.css",
+    "static/js/main.243d6f2a.js"
   ]
 }
