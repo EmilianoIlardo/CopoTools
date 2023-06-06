@@ -55,7 +55,7 @@ function UrlEncoderDecoder()
     };
 
     return (
-        <div className='container'>
+        <div className='row'>
             <div className="row">
                 <h1>
                     Url Encode/Decode

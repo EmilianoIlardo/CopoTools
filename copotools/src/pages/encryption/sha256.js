@@ -39,7 +39,7 @@ function Sha256EncoderComponent()
     };
 
     return (
-        <div className='container'>
+        <div className='row'>
             <div className="row">
                 <h1>
                     SHA-256 encoder
