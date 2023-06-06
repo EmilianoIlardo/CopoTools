@@ -18,6 +18,7 @@ import  { ToastContainer, toast } from "react-toastify";
 import Md5EncoderComponent from "../../../pages/encryption/md5";
 import Sha256EncoderComponent from "../../../pages/encryption/sha256";
 import Sha512EncoderComponent from "../../../pages/encryption/sha512";
+import IframeWrapper from "../../iframewrapper/iframewrapper";
 
 const Content = () => {
 
@@ -73,8 +74,10 @@ const Content = () => {
       </div>
       <div className="window-main-body-right">
         <section className="settings-section">
-        <h2 className="section-title">Sponsors</h2>
-
+        <h2 className="section-title">Sponsors</h2> 
+        <IframeWrapper iframe={"<iframe data-aa='2223158' src='//ad.a-ads.com/2223158?size=125x125' style='width:125px; height:125px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>"}></IframeWrapper>
+        <IframeWrapper iframe={"<iframe data-aa='2223160' src='//ad.a-ads.com/2223160?size=125x125' style='width:125px; height:125px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>"}></IframeWrapper>
+        <IframeWrapper iframe={"<iframe data-aa='2223161' src='//ad.a-ads.com/2223161?size=125x125' style='width:125px; height:125px; border:0px; padding:0; overflow:hidden; background-color: transparent;'></iframe>"}></IframeWrapper>
       </section>
       </div>
     </div>
