@@ -84,7 +84,7 @@ function CronParser()
                 <div className="col-md-12">
                     <button className="button button--publish" onClick={parse}>
                         <i class="bi bi-file-earmark-binary-fill"></i>
-                            Parse
+                            Parse Cron
                     </button>
                     <button className="button button--save" onClick={copyExpression}>
                         <i class="bi bi-clipboard"></i>

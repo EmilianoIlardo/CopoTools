@@ -69,7 +69,7 @@ function JwtDecoder()
                 <div className="col-md-12">
                     <button className="button button--publish" onClick={decode}>
                         <i class="bi bi-file-earmark-binary"></i>
-                            Decode
+                            Decode JWT
                     </button>
                     <button className="button button--save" onClick={() => copy(jwtToParse)}>
                         <i class="bi bi-clipboard"></i>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import ReactPrismEditor from "react-prism-editor";
+import './code-editor.scss';
 
-function CodeEditor({editorId, language, code, lineNumber, readOnly, clipboard, changeCode}) {
-
+function CodeEditor({editorId, language, code, lineNumber, readOnly, clipboard, changeCode, breakLines}) {
 
     const saveInStorage = (code) =>
     {
@@ -41,19 +41,22 @@ function CodeEditor({editorId, language, code, lineNumber, readOnly, clipboard, 
         }
     }, []);
 
-return (                
-<ReactPrismEditor
-    language={language}
-    theme={theme}
-    code={code}
-    lineNumber={lineNumber}
-    readOnly={readOnly}
-    clipboard={clipboard}
-    showLanguage={false}
-    changeCode={code => {
-        saveInStorage(code);
-        changeCode(code);
-    }}></ReactPrismEditor>)
+return (
+    <div className={breakLines ? 'BreakLines': ''}       >
+        <ReactPrismEditor
+            language={language}
+            theme={theme}
+            code={code}
+            lineNumber={lineNumber}
+            readOnly={readOnly}
+            clipboard={clipboard}
+            showLanguage={false}
+            changeCode={code => {
+                saveInStorage(code);
+                changeCode(code);
+            }}></ReactPrismEditor>
+    </div>     
+)
 
 
 }

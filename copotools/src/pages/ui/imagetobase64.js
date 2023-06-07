@@ -62,7 +62,7 @@ function ImageToBase64Component() {
                     multiple={ false } 
                     accept="image/*"/>
                 </div>
-                <hr></hr>
+                <hr class="mt-3"></hr>
                 <div class="mt-3">
                     <h6>
                         Use the following HTML to embed your image using Base64 as a source

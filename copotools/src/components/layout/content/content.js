@@ -19,6 +19,7 @@ import Md5EncoderComponent from "../../../pages/encryption/md5";
 import Sha256EncoderComponent from "../../../pages/encryption/sha256";
 import Sha512EncoderComponent from "../../../pages/encryption/sha512";
 import IframeWrapper from "../../iframewrapper/iframewrapper";
+import GqlPrettyPrinter from "../../../pages/formatting/prettyprint-gql";
 
 const Content = () => {
 
@@ -61,6 +62,7 @@ const Content = () => {
           <Route path="tools/ui/imagetobase64" element={<ImageToBase64Component />} />
           <Route path="tools/formatting/jsonprettyprinter" element={<JsonPrettyPrinter />} />
           <Route path="tools/formatting/xmlprettyprinter" element={<XmlPrettyPrinter />} />
+          <Route path="tools/formatting/gqlprettyprinter" element={<GqlPrettyPrinter />} />
           <Route path="tools/encryption/base64" element={<Base64EncoderDecoder />} />
           <Route path="tools/encryption/url" element={<UrlEncoderDecoder />} />
           <Route path="tools/encryption/crypto/md5" element={<Md5EncoderComponent />} />
