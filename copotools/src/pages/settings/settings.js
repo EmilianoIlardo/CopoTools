@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 
 function Settings()
 {
@@ -78,7 +78,7 @@ function Settings()
                     </select>
                 </div>
                 <div class="col-md-12 mt-3">
-                    <CodeEditor
+                    <Editor
                         key={editorTheme}          
                         editorId={"settingspreview"}     
                         language={"javascript"}
@@ -86,7 +86,7 @@ function Settings()
                         lineNumber={true}
                         readOnly={true}
                         clipboard={false}
-                        showLanguage={false}></CodeEditor>
+                        showLanguage={false}></Editor>
                 </div>
             </div>
 

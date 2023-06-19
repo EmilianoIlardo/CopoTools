@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css';
 import cronstrue from 'cronstrue';
 
@@ -63,7 +63,7 @@ function CronParser()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor             
+                <Editor             
                     editorId={"cronparser"}     
                     code={textToParse}
                     lineNumber={true}
@@ -72,7 +72,7 @@ function CronParser()
                     showLanguage={false}
                     changeCode={code => {
                         setTextToParse(code);
-                    }}></CodeEditor>
+                    }}></Editor>
                 </div>
             </div>
             <div className="row mt-3">

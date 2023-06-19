@@ -1,7 +1,7 @@
 import { LoremIpsum, loremIpsum } from "lorem-ipsum";
 import React, { useEffect, useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css';
 
 function LoremIpsumGenerator() {
@@ -51,7 +51,7 @@ function LoremIpsumGenerator() {
             </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor             
+                <Editor             
                     editorId={"loremipsum"}     
                     language={"text"}
                     code={generatedLoremImpsum}
@@ -59,7 +59,7 @@ function LoremIpsumGenerator() {
                     readOnly={true}
                     clipboard={true}
                     showLanguage={false}
-                    breakLines={true}></CodeEditor>
+                    breakLines={true}></Editor>
                 </div>
             </div>
             <div className="row mt-3">

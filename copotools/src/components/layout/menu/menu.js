@@ -12,7 +12,7 @@ const unfilteredMenuItems = [
     children: [{ name: "Pretty Print JSON", url: "tools/formatting/jsonprettyprinter"},
                 { name: "Pretty Print XML", url: "tools/formatting/xmlprettyprinter"},
                 { name: "Pretty Print SQL", url: "tools/formatting/sqlprettyprinter"},
-                { name: "Pretty Print GQL", url: "tools/formatting/gqlprettyprinter"}
+                { name: "Pretty Print GraphQL", url: "tools/formatting/gqlprettyprinter"}
 
     ]},
     { name: 'Encryption / Decryption', 

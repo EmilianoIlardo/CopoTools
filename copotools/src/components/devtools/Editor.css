@@ -1,0 +1,10 @@
+[contenteditable] {
+    outline: 0px;
+}
+
+pre {
+    border-radius: 6px;
+    min-height: 30px;
+    width: 100%;
+    cursor: text;
+}

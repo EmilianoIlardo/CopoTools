@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 import  { ToastContainer, toast } from "react-toastify";
 
 function ImageToBase64Component() {
@@ -67,14 +67,14 @@ function ImageToBase64Component() {
                     <h6>
                         Use the following HTML to embed your image using Base64 as a source
                     </h6>
-                    <CodeEditor         
+                    <Editor         
                         editorId={"base64image"}     
                         language={"html"}
                         code={result}
                         lineNumber={true}
                         readOnly={true}
                         clipboard={true}
-                        showLanguage={false}></CodeEditor>
+                        showLanguage={false}></Editor>
                 </div> 
                 <div className="row mt-3">
                     <div className="col-md-12">

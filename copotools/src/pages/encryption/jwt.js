@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 import jwt_decode from "jwt-decode";
 import  'react-toastify/dist/ReactToastify.css'
 
@@ -52,7 +52,7 @@ function JwtDecoder()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor
+                <Editor
                     editorId={'jwtdecoder'}          
                     code={jwtToParse}
                     lineNumber={true}
@@ -61,7 +61,7 @@ function JwtDecoder()
                     showLanguage={false}
                     changeCode={code => {
                         setJwtToParse(code);
-                    }}></CodeEditor>
+                    }}></Editor>
 
                 </div>
             </div>
@@ -89,7 +89,7 @@ function JwtDecoder()
             <div className="row mt-3">
                 <div className="col-md-12">
                     <h2>Header</h2>
-                    <CodeEditor
+                    <Editor
                         editorId={'jwtdecoderheader'}          
                         language={"json"}
                         theme='okaidia'
@@ -97,13 +97,13 @@ function JwtDecoder()
                         lineNumber={true}
                         readOnly={true}
                         clipboard={true}
-                        showLanguage={false}></CodeEditor>                 
+                        showLanguage={false}></Editor>                 
                 </div>
             </div>
             <div className="row mt-3">
                 <div className="col-md-12">
                     <h2>Payload</h2>
-                    <CodeEditor
+                    <Editor
                         editorId={'jwtdecoderpayload'}          
                         language={"json"}
                         theme='okaidia'
@@ -111,7 +111,7 @@ function JwtDecoder()
                         lineNumber={true}
                         readOnly={true}
                         clipboard={true}
-                        showLanguage={false}></CodeEditor>
+                        showLanguage={false}></Editor>
                 </div>
             </div>
         </div>

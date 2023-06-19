@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css'
 import * as CryptoJs from 'crypto-js'
 
@@ -50,7 +50,7 @@ function Sha512EncoderComponent()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor
+                <Editor
                     editorId={'sha512Encoder'}          
                     code={textToTransform}
                     lineNumber={true}
@@ -59,7 +59,7 @@ function Sha512EncoderComponent()
                     showLanguage={false}
                     changeCode={code => {
                         setTextToTransform(code);
-                    }}></CodeEditor>
+                    }}></Editor>
                 </div>
             </div>
             <div className="row mt-3">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css'
 
 function UrlEncoderDecoder() 
@@ -66,7 +66,7 @@ function UrlEncoderDecoder()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor
+                <Editor
                     editorId={'urldecoder'}          
                     code={textToTransform}
                     lineNumber={true}
@@ -75,7 +75,7 @@ function UrlEncoderDecoder()
                     showLanguage={false}
                     changeCode={code => {
                         setTextToTransform(code);
-                    }}></CodeEditor>
+                    }}></Editor>
                 </div>
             </div>
             <div className="row mt-3">

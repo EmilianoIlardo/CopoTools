@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css'
 
+var currentCode = '<node><helpNode>pretty print your ugly xml</helpNode></node>';
 function XmlPrettyPrinter() 
 {
-    const [textToFormat, setTextToFormat] = useState('<node><helpNode>pretty print your ugly xml</helpNode></node>')
+    const [intialCode, setInitialCode] = useState(currentCode)
 
     const formatXml = () => {
         try {
-            var xmlDoc = new DOMParser().parseFromString(textToFormat, 'application/xml');
+            var xmlDoc = new DOMParser().parseFromString(currentCode, 'application/xml');
             var xsltDoc = new DOMParser().parseFromString([
                 // describes how we want to modify the XML - indent everything
                 '<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform">',
@@ -31,7 +32,8 @@ function XmlPrettyPrinter()
                 throw new Error();
 
             var resultXml = new XMLSerializer().serializeToString(resultDoc);
-            setTextToFormat(resultXml);
+            currentCode = resultXml;
+            setInitialCode(resultXml);
         }
         catch {
             toast.error('Invalid XML!', {
@@ -61,7 +63,7 @@ function XmlPrettyPrinter()
     };
 
     const copyXml = () => {
-        navigator.clipboard.writeText(textToFormat);
+        navigator.clipboard.writeText(currentCode);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,
@@ -86,17 +88,17 @@ function XmlPrettyPrinter()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor
+                <Editor
                     editorId={'xmlprettyprinter'}          
                     language={"xml"}
-                    code={textToFormat}
+                    code={intialCode}
                     lineNumber={true}
                     readOnly={false}
                     clipboard={true}
                     showLanguage={false}
                     changeCode={code => {
-                        setTextToFormat(code);
-                    }}></CodeEditor>
+                        currentCode = code;
+                    }}></Editor>
                 </div>
             </div>
             <div className="row mt-3">

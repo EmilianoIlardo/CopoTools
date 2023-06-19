@@ -1,26 +1,28 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
 import  'react-toastify/dist/ReactToastify.css';
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 import  prettier  from 'prettier/standalone'
 import  parser  from 'prettier/parser-graphql';
 
+let currentCode = `
+# supports formatting schema
+type CodersToolkit{
+    id:ID!
+                    name: String
+    }
+    # and queries
+    { CodersToolkit {name}}
+    `;
 function GqlPrettyPrinter() 
 {
-    const [gqlToFormat, setGqlToFormat] = useState(`
-    # supports formatting schema
-    type CodersToolkit{
-        id:ID!
-                        name: String
-        }
-        # and queries
-        { CodersToolkit {name}}
-        `);
+    const [initialCode, setInitialCode] = useState(currentCode);
 
     const formatGqlSchema = () => {
         try {
-            setGqlToFormat(
-            prettier.format(gqlToFormat, { plugins: [parser],parser: "graphql"})
+            currentCode = prettier.format(currentCode, { plugins: [parser],parser: "graphql"});
+            setInitialCode(
+                currentCode
             );
         }
         catch {
@@ -37,7 +39,7 @@ function GqlPrettyPrinter()
     }
 
     const copyGqlSchema = () => {
-        navigator.clipboard.writeText(gqlToFormat);
+        navigator.clipboard.writeText(currentCode);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,
@@ -52,27 +54,27 @@ function GqlPrettyPrinter()
         <div className='row'>
             <div className="row">
                 <h1>
-                    Pretty print Gql
+                    Pretty print GraphQl
                 </h1>
                 <h6>
-                    Enter the Gql to pretty print and then click the green button
+                    Enter the GraphQl to pretty print and then click the green button
                     in order to pretty print. Also, you can copy the result to your clipboard.
-                    Note that the Gql must be VALID in order to be able to pretty print it.
+                    Note that the GraphQl must be VALID in order to be able to pretty print it.
                 </h6>
             </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor             
+                <Editor             
                     editorId={"Gqlprettyprinter"}     
-                    language={"Gql"}
-                    code={gqlToFormat}
+                    language={"graphql"}
+                    code={initialCode}
                     lineNumber={true}
                     readOnly={false}
                     clipboard={true}
                     showLanguage={false}
                     changeCode={code => {
-                        setGqlToFormat(code);
-                    }}></CodeEditor>
+                        currentCode = code;
+                    }}></Editor>
                 </div>
             </div>
             <div className="row mt-3">

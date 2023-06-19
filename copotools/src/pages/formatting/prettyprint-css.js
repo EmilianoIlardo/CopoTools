@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import  { ToastContainer, toast } from "react-toastify";
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css';
 import { format } from 'sql-formatter';
 
+let currentCode = 'SELECT * FROM Table1 t JOIN Table2 t2 on t.Id = t2.Table1Id WHERE T.Id > 512 ORDER BY t.CreatedTimestamp DESC';
 function SqlPrettyPrinter() 
 {
-    const [textToFormat, setTextToFormat] = useState('SELECT * FROM Table1 t JOIN Table2 t2 on t.Id = t2.Table1Id WHERE T.Id > 512 ORDER BY t.CreatedTimestamp DESC');
+    const [initialCode, setInitialCode] = useState(currentCode);
     
     const formatCss = () => {
         try {
-
-            setTextToFormat(format(textToFormat, { language: 'mysql' }));
+            currentCode = format(currentCode, { language: 'sql' });
+            setInitialCode(currentCode);
         }
         catch (error) {
             toast.error('Invalid SQL!', {
@@ -27,7 +28,7 @@ function SqlPrettyPrinter()
     }
 
     const copyCss = () => {
-        navigator.clipboard.writeText(textToFormat);
+        navigator.clipboard.writeText(currentCode);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,
@@ -52,17 +53,17 @@ function SqlPrettyPrinter()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor
+                <Editor
                     editorId={'sqlprettyprinter'}          
                     language={"sql"}
-                    code={textToFormat}
+                    code={initialCode}
                     lineNumber={true}
                     readOnly={false}
                     clipboard={true}
                     showLanguage={false}
                     changeCode={code => {
-                        setTextToFormat(code);
-                    }}></CodeEditor>
+                        currentCode = code;
+                    }}></Editor>
                 </div>
             </div>
             <div className="row mt-3">

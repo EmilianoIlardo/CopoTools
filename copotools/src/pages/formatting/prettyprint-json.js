@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useRef, useState  } from "react";
 import  { ToastContainer, toast } from "react-toastify";
 import  'react-toastify/dist/ReactToastify.css';
-import CodeEditor from "../../components/devtools/code-editor";
+import Editor from "../../components/devtools/Editor";
 
+var currentCode = '{"help": "format your ugly json"}';
 function JsonPrettyPrinter() 
 {
-    const [textToFormat, setTextToFormat] = useState('{"help": "format your ugly json"}')
+    const [initialCode, setInitialCode] = useState(currentCode);
 
     const formatJson = () => {
         try {
-            var objResult = JSON.parse(textToFormat);
-            setTextToFormat(JSON.stringify(objResult, null, '\t'));
+            console.log(initialCode);
+            var objResult = JSON.parse(currentCode);
+            currentCode = JSON.stringify(objResult, null, '\t');
+            setInitialCode(currentCode);
         }
         catch {
             toast.error('Invalid JSON!', {
@@ -26,7 +29,7 @@ function JsonPrettyPrinter()
     }
 
     const copyJson = () => {
-        navigator.clipboard.writeText(textToFormat);
+        navigator.clipboard.writeText(currentCode);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,
@@ -51,17 +54,15 @@ function JsonPrettyPrinter()
                 </div>
             <div className="row">
                 <div className="col-md-12">
-                <CodeEditor             
+                <Editor             
                     editorId={"jsonprettyprinter"}     
                     language={"json"}
-                    code={textToFormat}
+                    code={initialCode}
                     lineNumber={true}
                     readOnly={false}
-                    clipboard={true}
-                    showLanguage={false}
                     changeCode={code => {
-                        setTextToFormat(code);
-                    }}></CodeEditor>
+                        currentCode = code;
+                    }}></Editor>
                 </div>
             </div>
             <div className="row mt-3">
