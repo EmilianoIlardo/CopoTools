@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcopotools=self.webpackChunkcopotools||[]).push([[327],{2327:function(o,n,t){function u(){}t.r(n),t.d(n,{default:function(){return u}})}}]);
+//# sourceMappingURL=327.2dee573d.chunk.js.map

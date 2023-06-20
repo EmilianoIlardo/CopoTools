@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/769.77d3cd3a.chunk.js","mappings":"2GAEe,SAASA,K","sources":["components/devtools/EditorThemeCoy.js"],"sourcesContent":["import \"prismjs/themes/prism-coy.css\";\r\n\r\nexport default function CoyTheme() {};"],"names":["CoyTheme"],"sourceRoot":""}

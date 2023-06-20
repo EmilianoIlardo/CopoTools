@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/588.bc0c0d82.chunk.js","mappings":"2GAEe,SAASA,K","sources":["components/devtools/EditorThemeOkaidia.js"],"sourcesContent":["import \"prismjs/themes/prism-okaidia.css\";\r\n\r\nexport default function OkaidiaTheme() {};"],"names":["OkaidiaTheme"],"sourceRoot":""}
