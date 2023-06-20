@@ -1,11 +1,11 @@
 import { LoremIpsum, loremIpsum } from "lorem-ipsum";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, version } from "react";
 import  { ToastContainer, toast } from "react-toastify";
 import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css';
 
 function LoremIpsumGenerator() {
-    const [generatedLoremImpsum, setGeneratedLoremIpsum] = useState(" ");
+    const [generatedLoremImpsum, setGeneratedLoremIpsum] = useState({code: " ", version: 0});
     const lorem = new LoremIpsum({
         sentencesPerParagraph: {
           max: 8,
@@ -18,19 +18,19 @@ function LoremIpsumGenerator() {
       });
     
     const addOneParagraph = () => {
-        let newLoremIpsum = generatedLoremImpsum.trim().length < 1 
+        let newLoremIpsum = generatedLoremImpsum.code.trim().length < 1 
             ? lorem.generateParagraphs(1)
-            : `${generatedLoremImpsum}\n${lorem.generateParagraphs(1)}`;
+            : `${generatedLoremImpsum.code}\n${lorem.generateParagraphs(1)}`;
 
-        setGeneratedLoremIpsum(newLoremIpsum);
+        setGeneratedLoremIpsum({code: newLoremIpsum, version: generatedLoremImpsum.version+1});
     };
 
     const clear = () => {
-        setGeneratedLoremIpsum(" ");
+        setGeneratedLoremIpsum({code: " ", version: 0});
     };
 
     const copyResult = () => {
-        navigator.clipboard.writeText(generatedLoremImpsum);
+        navigator.clipboard.writeText(generatedLoremImpsum.code);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,

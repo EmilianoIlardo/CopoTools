@@ -20,46 +20,53 @@ var OkaidiaTheme = React.lazy(() => import('./EditorThemeOkaidia'));
 var DarkTheme = React.lazy(() => import('./EditorThemeDark'));
 var TwilightTheme = React.lazy(() => import('./EditorThemeTwilight'));
 var CoyTheme = React.lazy(() => import('./EditorThemeCoy'));
+const editorLocalStorageKeyPrefix = "editorData";
+
+function HighlightCodeWhenAvailable()
+{
+    const intervalId = setInterval(() => {
+        const element = document.getElementsByClassName("editor-container");
+        if (element !== null && element.length && element.length > 0)
+        {
+            Prism.highlightAll();
+            clearInterval(intervalId);
+        }
+
+    }, 10)
+}
+
+const isTextStorageEnabled = () =>
+{
+    let settingsStr = localStorage.getItem("settings");
+    let settings = JSON.parse(settingsStr);
+
+    return settings?.textStorageEnabled
+}
+
+function GetCode(code, version, editorId, changeCodeCallback)
+{
+    if (!isTextStorageEnabled() || version > 0)
+        return code;
+
+    var previouslySavedContent = localStorage.getItem(`${editorLocalStorageKeyPrefix}-${editorId}`);
+    if (!!previouslySavedContent && previouslySavedContent.length > 0)
+    {
+        changeCodeCallback(previouslySavedContent);
+        return previouslySavedContent;
+    }
+    return code;
+}
+
+
 function Editor({editorId, language, code, lineNumber, readOnly, changeCode })
 {   
-    //code highlight when DOM is availble
-    (() => { 
-        const intervalId = setInterval(() => {
-            const element = document.getElementsByClassName("editor-container");
-            if (element !== null && element.length && element.length > 0)
-            {
-                Prism.highlightAll();
-                clearInterval(intervalId);
-            }
-    
-        }, 10);
-    })();
-    
-    useEffect(() => 
-    { 
-        if (!isTextStorageEnabled())
-        return;
-        
-        var previouslySavedContent = localStorage.getItem(`${editorLocalStorageKeyPrefix}-${editorId}`);
-        if (!!previouslySavedContent && previouslySavedContent.length > 0)
-        {
-            changeCode(previouslySavedContent);
-        }
-    }, []);
 
     const saveInStorage = (code) =>
     {
         if (isTextStorageEnabled())
             localStorage.setItem(`${editorLocalStorageKeyPrefix}-${editorId}`, code);
     }
-    
-    const isTextStorageEnabled = () =>
-    {
-        let settingsStr = localStorage.getItem("settings");
-        let settings = JSON.parse(settingsStr);
 
-        return settings?.textStorageEnabled
-    }
     
     const onEditorChange = (event) =>
     {
@@ -99,7 +106,8 @@ function Editor({editorId, language, code, lineNumber, readOnly, changeCode })
         }
     }
 
-    const editorLocalStorageKeyPrefix = "editorData";
+    HighlightCodeWhenAvailable();
+    code.code = GetCode(code.code, code.version, editorId, changeCode);
     const [theme, setTheme] = useState(getThemeFromStorage());
     
     return(
@@ -108,11 +116,11 @@ function Editor({editorId, language, code, lineNumber, readOnly, changeCode })
             {getThemeJsx()}
             <div className="editor-container">
                 <pre className={lineNumber ? 'line-numbers' : 'no-line-numbers'}>
-                    <code 
+                    <code key={code.version}
                         className={`language-${language}`} 
                         contentEditable={!readOnly} 
                         onInput={(e) => { onEditorChange(e);}}>
-                        {code}
+                        {code.code ?? ' '}
                     </code>
                 </pre>
             </div>

@@ -4,16 +4,17 @@ import Editor from "../../components/devtools/Editor";
 import jwt_decode from "jwt-decode";
 import  'react-toastify/dist/ReactToastify.css'
 
+let currentCode = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUaGVzZSB0b29scyBhcmUgdGhlIGJlc3QiLCJuYW1lIjoiRW1pbGlhbm8gSWxhcmRvIiwiaWF0IjoxNTE2MjM5MDIyfQ.RCCgR-H7GNWM0sLGNjobv8wIriITSabedPJSiI46PM0';
 function JwtDecoder() 
 {
-    const [jwtToParse, setJwtToParse] = useState('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUaGVzZSB0b29scyBhcmUgdGhlIGJlc3QiLCJuYW1lIjoiRW1pbGlhbm8gSWxhcmRvIiwiaWF0IjoxNTE2MjM5MDIyfQ.RCCgR-H7GNWM0sLGNjobv8wIriITSabedPJSiI46PM0');
-    const [decodedJwt, setDecodedJwt] = useState(" ");
-    const [decodedHeader, setDecodedHeader] = useState(" ");
+    const [jwtToParse, setJwtToParse] = useState({ code: currentCode, version: 0});
+    const [decodedJwt, setDecodedJwt] = useState({ code: ' ', version: 0});
+    const [decodedHeader, setDecodedHeader] = useState({ code: ' ', version: 0});
 
     const decode = () => {
         try {
-            setDecodedJwt(JSON.stringify(jwt_decode(jwtToParse), null, '\t'));
-            setDecodedHeader(JSON.stringify(jwt_decode(jwtToParse, { header: true }), null, '\t'));
+            setDecodedJwt({ code: JSON.stringify(jwt_decode(currentCode), null, '\t'), version: decodedJwt.version+1});
+            setDecodedHeader({ code: JSON.stringify(jwt_decode(currentCode, { header: true }), null, '\t'), version: decodedHeader.version+1});
         } catch {
             toast.error('Can\'t decode. Input might contain invalid characters.', {
                 position: "top-right",
@@ -60,7 +61,7 @@ function JwtDecoder()
                     clipboard={true}
                     showLanguage={false}
                     changeCode={code => {
-                        setJwtToParse(code);
+                        currentCode = code;
                     }}></Editor>
 
                 </div>
@@ -71,15 +72,15 @@ function JwtDecoder()
                         <i class="bi bi-file-earmark-binary"></i>
                             Decode JWT
                     </button>
-                    <button className="button button--save" onClick={() => copy(jwtToParse)}>
+                    <button className="button button--save" onClick={() => copy(jwtToParse.code)}>
                         <i class="bi bi-clipboard"></i>
                             Copy JWT to clipboard
                     </button>
-                    <button className="button button--save" onClick={() => copy(decodedHeader)}>
+                    <button className="button button--save" onClick={() => copy(decodedHeader.code)}>
                         <i class="bi bi-clipboard"></i>
                             Copy Header to clipboard
                     </button>
-                    <button className="button button--save" onClick={() => copy(decodedJwt)}>
+                    <button className="button button--save" onClick={() => copy(decodedJwt.code)}>
                         <i class="bi bi-clipboard"></i>
                             Copy Payload to clipboard
                     </button>

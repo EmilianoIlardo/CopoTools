@@ -82,7 +82,7 @@ function Settings()
                         key={editorTheme}          
                         editorId={"settingspreview"}     
                         language={"javascript"}
-                        code={'console.log("hello world from Coder Toolkit!");'}
+                        code={{code: 'console.log("hello world from Coder Toolkit!");'}}
                         lineNumber={true}
                         readOnly={true}
                         clipboard={false}

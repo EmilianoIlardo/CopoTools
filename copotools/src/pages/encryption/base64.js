@@ -3,14 +3,16 @@ import  { ToastContainer, toast } from "react-toastify";
 import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css'
 
+let currentCode = 'Base64 encoding made easy';
 function Base64EncoderDecoder() 
 {
-    const [textToTransform, setTextToTransform] = useState('Base64 encoding made easy');
+    const [textToTransform, setTextToTransform] = useState({ code: currentCode, version: 0});
     
     const encode = () => {
         try {
-            var encoded = btoa(textToTransform);
-            setTextToTransform(encoded);
+            var encoded = btoa(currentCode);
+            currentCode = encoded;
+            setTextToTransform({code: encoded, version: textToTransform.version+1});
         } catch {
             toast.error('Can\'t encode. Input might contain invalid characters.', {
                 position: "top-right",
@@ -26,8 +28,9 @@ function Base64EncoderDecoder()
 
     const decode = () => {
         try {
-            var decoded = atob(textToTransform);
-            setTextToTransform(decoded);
+            var decoded = atob(currentCode);
+            currentCode = decoded;
+            setTextToTransform({code: decoded, version: textToTransform.version+1});
         } catch {
             toast.error('Can\'t decode. Input might contain invalid characters.', {
                 position: "top-right",
@@ -42,7 +45,7 @@ function Base64EncoderDecoder()
     };
     
     const copy = () => {
-        navigator.clipboard.writeText(textToTransform);
+        navigator.clipboard.writeText(currentCode);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,
@@ -74,7 +77,7 @@ function Base64EncoderDecoder()
                     clipboard={true}
                     showLanguage={false}
                     changeCode={code => {
-                        setTextToTransform(code);
+                        currentCode = code;
                     }}></Editor>
                 </div>
             </div>

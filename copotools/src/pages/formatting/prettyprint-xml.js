@@ -6,7 +6,7 @@ import  'react-toastify/dist/ReactToastify.css'
 var currentCode = '<node><helpNode>pretty print your ugly xml</helpNode></node>';
 function XmlPrettyPrinter() 
 {
-    const [intialCode, setInitialCode] = useState(currentCode)
+    const [intialCode, setInitialCode] = useState({code: currentCode, version: 0})
 
     const formatXml = () => {
         try {
@@ -33,7 +33,7 @@ function XmlPrettyPrinter()
 
             var resultXml = new XMLSerializer().serializeToString(resultDoc);
             currentCode = resultXml;
-            setInitialCode(resultXml);
+            setInitialCode({code: resultXml, version: intialCode.version+1});
         }
         catch {
             toast.error('Invalid XML!', {

@@ -6,14 +6,13 @@ import Editor from "../../components/devtools/Editor";
 var currentCode = '{"help": "format your ugly json"}';
 function JsonPrettyPrinter() 
 {
-    const [initialCode, setInitialCode] = useState(currentCode);
+    const [initialCode, setInitialCode] = useState({code:currentCode, version: 0});
 
     const formatJson = () => {
         try {
-            console.log(initialCode);
             var objResult = JSON.parse(currentCode);
             currentCode = JSON.stringify(objResult, null, '\t');
-            setInitialCode(currentCode);
+            setInitialCode({code: currentCode, version: initialCode.version+1});
         }
         catch {
             toast.error('Invalid JSON!', {

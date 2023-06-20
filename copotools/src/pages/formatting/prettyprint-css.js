@@ -7,12 +7,12 @@ import { format } from 'sql-formatter';
 let currentCode = 'SELECT * FROM Table1 t JOIN Table2 t2 on t.Id = t2.Table1Id WHERE T.Id > 512 ORDER BY t.CreatedTimestamp DESC';
 function SqlPrettyPrinter() 
 {
-    const [initialCode, setInitialCode] = useState(currentCode);
+    const [initialCode, setInitialCode] = useState({code: currentCode, version: 0});
     
     const formatCss = () => {
         try {
             currentCode = format(currentCode, { language: 'sql' });
-            setInitialCode(currentCode);
+            setInitialCode({code: currentCode, version: initialCode.version+1});
         }
         catch (error) {
             toast.error('Invalid SQL!', {

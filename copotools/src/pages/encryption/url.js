@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, version } from "react";
 import  { ToastContainer, toast } from "react-toastify";
 import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css'
 
+let currentCode = '?help=click encode to see this in url encoded format';
 function UrlEncoderDecoder() 
 {
-    const [textToTransform, setTextToTransform] = useState('?help=click encode to see this in url encoded format');
+    const [textToTransform, setTextToTransform] = useState({code: currentCode, version: 0});
     
     const encode = () => {
         try {
-            var result = encodeURIComponent(textToTransform);
-            setTextToTransform(result);
+            var result = encodeURIComponent(textToTransform.code);
+            currentCode = result;
+            setTextToTransform({code: currentCode, version: textToTransform.version+1});
         } catch {
             toast.error('Can\'t encode. Input might contain invalid characters.', {
                 position: "top-right",
@@ -26,8 +28,9 @@ function UrlEncoderDecoder()
 
     const decode = () => {
         try {
-            let result = decodeURIComponent(textToTransform);
-            setTextToTransform(result);
+            let result = decodeURIComponent(textToTransform.code);
+            currentCode = result;
+            setTextToTransform({code: currentCode, version: textToTransform.version+1});
         } catch {
             toast.error('Can\'t decode. Input might contain invalid characters.', {
                 position: "top-right",
@@ -42,7 +45,7 @@ function UrlEncoderDecoder()
     };
     
     const copy = () => {
-        navigator.clipboard.writeText(textToTransform);
+        navigator.clipboard.writeText(currentCode);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,

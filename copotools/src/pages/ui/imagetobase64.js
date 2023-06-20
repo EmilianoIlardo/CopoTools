@@ -4,10 +4,10 @@ import  { ToastContainer, toast } from "react-toastify";
 
 function ImageToBase64Component() {
 
-    const [result, setResult] = useState(" ");
+    const [result, setResult] = useState({code: " ", version: 0});
     const handleChange = (e) => {
 
-        setResult("loading...");
+        setResult({code: "loading...", version: result.version++});
         // get the files
         let files = e.target.files;
     
@@ -26,7 +26,7 @@ function ImageToBase64Component() {
           // on reader load somthing...
           reader.onload = () => {
 
-            setResult(`<img src="${reader.result}"></img>`);
+            setResult({ code: `<img src="${reader.result}"></img>`, version: result.version+1});
     
           } // reader.onload
     
@@ -35,7 +35,7 @@ function ImageToBase64Component() {
       }
 
       const copyToClipboard = () => {
-        navigator.clipboard.writeText(result);
+        navigator.clipboard.writeText(result.code);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,

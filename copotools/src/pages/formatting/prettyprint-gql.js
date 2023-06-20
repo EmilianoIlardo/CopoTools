@@ -16,13 +16,13 @@ type CodersToolkit{
     `;
 function GqlPrettyPrinter() 
 {
-    const [initialCode, setInitialCode] = useState(currentCode);
+    const [initialCode, setInitialCode] = useState({code: currentCode, version: 0});
 
     const formatGqlSchema = () => {
         try {
             currentCode = prettier.format(currentCode, { plugins: [parser],parser: "graphql"});
             setInitialCode(
-                currentCode
+                {code: currentCode, version: initialCode.version+1}
             );
         }
         catch {
