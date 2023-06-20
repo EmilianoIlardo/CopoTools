@@ -52,7 +52,7 @@ function GetCode(code, version, editorId, changeCodeCallback)
          // if enabled, means that storage is enabled, therefore we need to save the new value
             localStorage.setItem(`${editorLocalStorageKeyPrefix}-${editorId}`, code);
 
-        changeCodeCallback(code)
+        changeCodeCallback && changeCodeCallback(code)
         return code;
     }
 
