@@ -4,14 +4,16 @@ import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css'
 import * as CryptoJs from 'crypto-js'
 
+let currentCode = 'SHA-256 encoding made easy';
 function Sha256EncoderComponent() 
 {
-    const [textToTransform, setTextToTransform] = useState('SHA-256 encoding made easy');
+    const [initialCode, setInitialCode] = useState({code: currentCode, version: 0});
     
     const encode = () => {
         try {
-            var hash = CryptoJs.SHA256(textToTransform);
-            setTextToTransform(hash.toString(CryptoJs.enc.Hex))
+            var hash = CryptoJs.SHA256(currentCode);
+            currentCode = hash.toString(CryptoJs.enc.Hex);
+            setInitialCode({code: currentCode, version: initialCode.version+1});
         } catch(error) {
             toast.error('Can\'t encode. Input might contain invalid characters.', {
                 position: "top-right",
@@ -26,7 +28,7 @@ function Sha256EncoderComponent()
     };
     
     const copy = () => {
-        navigator.clipboard.writeText(textToTransform);
+        navigator.clipboard.writeText(currentCode);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,
@@ -52,13 +54,13 @@ function Sha256EncoderComponent()
                 <div className="col-md-12">
                 <Editor
                     editorId={'sha256Encoder'}          
-                    code={textToTransform}
+                    code={initialCode}
                     lineNumber={true}
                     readOnly={false}
                     clipboard={true}
                     showLanguage={false}
                     changeCode={code => {
-                        setTextToTransform(code);
+                        currentCode = code;
                     }}></Editor>
                 </div>
             </div>

@@ -4,11 +4,14 @@ import Editor from "../../components/devtools/Editor";
 import  'react-toastify/dist/ReactToastify.css';
 import cronstrue from 'cronstrue';
 
+let currentCode = '0 10 ? * MON-FRI';
 function CronParser() 
 {
+    const [textToParse, setTextToParse] = useState({code: currentCode, version: 0});
+    const [result, setResult] = useState('At 10:00 AM, Monday through Friday');
     const parse = () => {
         try {
-            setResult(cronstrue.toString(textToParse));
+            setResult(cronstrue.toString(currentCode));
         } catch (error){
             toast.error('Can\'t parse cron expression.', {
                 position: "top-right",
@@ -23,7 +26,7 @@ function CronParser()
     };
     
     const copyExpression = () => {
-        navigator.clipboard.writeText(textToParse);
+        navigator.clipboard.writeText(currentCode);
         toast.info('Copied to clipboard succesfully', {
             position: "top-right",
             autoClose: 5000,
@@ -48,8 +51,7 @@ function CronParser()
             });
     };
 
-    const [textToParse, setTextToParse] = useState('0 10 ? * MON-FRI');
-    const [result, setResult] = useState('At 10:00 AM, Monday through Friday');
+
 
     return (
         <div className='container'>
@@ -71,7 +73,7 @@ function CronParser()
                     clipboard={true}
                     showLanguage={false}
                     changeCode={code => {
-                        setTextToParse(code);
+                        currentCode = code;
                     }}></Editor>
                 </div>
             </div>

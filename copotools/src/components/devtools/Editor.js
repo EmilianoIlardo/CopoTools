@@ -45,15 +45,26 @@ const isTextStorageEnabled = () =>
 
 function GetCode(code, version, editorId, changeCodeCallback)
 {
-    if (!isTextStorageEnabled() || version > 0)
-        return code;
+    // having version bigger than 0 means that the code was modified externally
+    if (version > 0)
+    {
+        if(isTextStorageEnabled())
+         // if enabled, means that storage is enabled, therefore we need to save the new value
+            localStorage.setItem(`${editorLocalStorageKeyPrefix}-${editorId}`, code);
 
+        changeCodeCallback(code)
+        return code;
+    }
+
+    // if this is version 0 of the code, and saving code is enabled, return the previously saved code
     var previouslySavedContent = localStorage.getItem(`${editorLocalStorageKeyPrefix}-${editorId}`);
     if (!!previouslySavedContent && previouslySavedContent.length > 0)
     {
-        changeCodeCallback(previouslySavedContent);
+        changeCodeCallback && changeCodeCallback(previouslySavedContent);
         return previouslySavedContent;
     }
+
+
     return code;
 }
 

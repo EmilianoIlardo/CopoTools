@@ -10,7 +10,7 @@ function UrlEncoderDecoder()
     
     const encode = () => {
         try {
-            var result = encodeURIComponent(textToTransform.code);
+            var result = encodeURIComponent(currentCode);
             currentCode = result;
             setTextToTransform({code: currentCode, version: textToTransform.version+1});
         } catch {
@@ -28,7 +28,7 @@ function UrlEncoderDecoder()
 
     const decode = () => {
         try {
-            let result = decodeURIComponent(textToTransform.code);
+            let result = decodeURIComponent(currentCode);
             currentCode = result;
             setTextToTransform({code: currentCode, version: textToTransform.version+1});
         } catch {
@@ -77,7 +77,7 @@ function UrlEncoderDecoder()
                     clipboard={true}
                     showLanguage={false}
                     changeCode={code => {
-                        setTextToTransform(code);
+                        currentCode = code;
                     }}></Editor>
                 </div>
             </div>
